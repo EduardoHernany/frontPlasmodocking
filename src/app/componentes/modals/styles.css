@@ -1,0 +1,22 @@
+table {
+  border-collapse: collapse;
+  border-radius: 20px;
+  width: 80%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+  
+  border-bottom: 1px solid #DDD;
+}
+
+tr:hover {
+  background-color: rgb(226 232 240);
+}
+
+.close{
+  position: fixed;
+  top: 5;
+  left:5;
+}
