@@ -52,17 +52,17 @@ export default function Example() {
       }
 
       } catch (error) {
-      console.error(error);
-      setMensagem({
-        texto: 'Ja existe um Usuario com esse Username ou email.'
-      });
-      setFormData({
-        ...formData,
-        nome: '',
-        email: '',
-        nome_usuario: '',
-        password: '',
-      });
+        console.error(error);
+        setMensagem({
+          texto: 'Ja existe um Usuario com esse Username ou email.'
+        });
+        setFormData({
+          ...formData,
+          nome: '',
+          email: '',
+          nome_usuario: '',
+          password: '',
+        });
     }
 /*
   try {

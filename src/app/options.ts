@@ -15,7 +15,7 @@ export const options:NextAuthOptions = {
             name: "Credentials",
             
             credentials: {
-              username: { label: "Username", type: "text", placeholder: "jsmith" },
+              name: { label: "Username", type: "text", placeholder: "jsmith" },
               password: { label: "Password", type: "password" }
             },
             async authorize(credentials)  {
@@ -26,14 +26,13 @@ export const options:NextAuthOptions = {
              
               const user = await prisma.user.findFirst({
                 where: {
-                  username: credentials.username,
+                  name: credentials.name,
                   password: credentials.password,
                 },
               });
       
 
-              const usere = {username:'teste', name:user?.name,email:user?.email,password:user?.password}
-              if (user) {
+                if (user) {
                 // Aqui você pode retornar o usuário encontrado para ser usado na autenticação.
                 // Certifique-se de retornar um objeto que corresponda à estrutura do objeto user no Prisma.
                 return user;

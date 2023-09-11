@@ -11,6 +11,7 @@ export default function Example({ userName }) {
   const [arquivo, setArquivo] = useState(null);
 
   const handleNomeChange = (event) => {
+   
     setNome(event.target.value);
   };
 
