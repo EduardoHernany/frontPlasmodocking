@@ -31,7 +31,7 @@ export default function Example() {
   const handleForm = async (event) => {
     event.preventDefault(); // Evita que o formulário recarregue a página
 
-    const { nome, email, nome_usuario, password } = formData;
+    
 
     try {
       const response = await fetch('http://127.0.0.1:8000/api_cadastro/', {
@@ -64,27 +64,7 @@ export default function Example() {
           password: '',
         });
     }
-/*
-  try {
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ nome, email, nome_usuario, password }),
-    });
-    const data = await response.json();
-    if (response.ok) {
-      // Registro bem-sucedido
-      setMensagem({ texto: 'Usuário registrado com sucesso!' });
-    } else {
-     
-      setMensagem({ texto: data.message });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-  */
+
   };
 
   return (

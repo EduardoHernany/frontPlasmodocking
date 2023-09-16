@@ -27,7 +27,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Provider>
           { session? <Navbarauth/> : <Navbar/>}
-          <div className='mt-20'>{children}</div>
+          <div className='my-20'>{children}</div>
             
           <Footer/>
         </Provider>

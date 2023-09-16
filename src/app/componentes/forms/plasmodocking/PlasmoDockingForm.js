@@ -64,14 +64,13 @@ export default function Example({ userName }) {
                   Nome do Processo :
                 </label>
                 <div className="mt-2">
-                  <input
+                  <input required
                     id="nome_processo"
                     name="nome_processo"
                     placeholder=" plasmodocking"
                     type="text"
                     value={nome} 
                     onChange={handleNomeChange}
-                    required
                     className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -82,7 +81,7 @@ export default function Example({ userName }) {
                   <label htmlFor="file_processo" className="block text-sm font-medium leading-6 text-gray-900">Escolher arquivo:</label>
                 </div>  
                 <div className="mt-2 ">
-                  <input
+                  <input required
                     className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     id="file_processo"
                     name="file_processo"
