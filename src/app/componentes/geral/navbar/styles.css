@@ -27,7 +27,7 @@ button {
 .navbar {
   position: fixed; /* Adiciona esta linha */
   top: 0; /* Posiciona a navbar no topo */
-  height: 70px;
+  height: 60px;
   background-color: #263554;
   padding: 20px 40px;
   display: flex;

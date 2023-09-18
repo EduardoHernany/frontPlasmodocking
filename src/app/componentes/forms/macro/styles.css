@@ -45,13 +45,13 @@
 }
 
 .gidboxpar input[type="number"]{
-  width: 19%;
+  width: 24%;
   border: 1px solid #0D1F36;
 
 }
 
 .gidboxpar{
   border: 1px solid;
-  padding: 20px
+  padding: 10px
 }
     

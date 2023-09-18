@@ -78,11 +78,15 @@ function YourComponent({ userName }) {
             <div className={`hidden shrink-0 sm:flex sm:flex-col sm:items-end border-r-8 rounded-md pr-5 ${item.status ? 'border-green-600' : 'border-red-600'} `}>
               <Dropdowns  options={dropdownOptions} idItem= {item.id} onDeleteSuccess={handleDeleteSuccess} />
 
-              <div>
-                <button className="mt-1 w-50 justify-center rounded-md bg-slate-800 px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={handleOpenModal}>Ver Dados</button>
+              <div className="mt-1  w-50 justify-center rounded-md bg-slate-800 px-2 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              <Link href={`/resultados/dados?id=${item.id}`}>
 
-                <Modal resultadoFinal={item.resultado_final} isOpen={isModalOpen} onClose={handleCloseModal} />
+                <span >
+                  Ver Dados
+                </span>
+              </Link>
+              
+                
               </div>  
             </div>
 

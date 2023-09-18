@@ -103,7 +103,7 @@ export default function Example({ userName }) {
             <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
               
               <div>
-                <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor= "nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
                   Nome da macromolecula :
                 </label>
                 <div className="mt-2">
@@ -168,29 +168,29 @@ export default function Example({ userName }) {
 
             
               <div className="gidboxpar"><span> GridBox parâmetros </span><br/><br/>
-                <label for="sizeX">Size X:</label>
+                <label htmlFor= "sizeX">Size X:</label>
                 <input type="number" id="sizeX" name="sizeX" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'sizex')}}/>
 
-                <label for="sizeY">Y:</label>
+                <label htmlFor= "sizeY">Y:</label>
                 <input type="number" id="sizeY" name="sizeY" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'sizey')}}/>
 
-                <label for="sizeZ">Z:</label>
+                <label htmlFor= "sizeZ">Z:</label>
                 <input type="number" id="sizeZ" name="sizeZ" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'sizez')}}/>
 
                 <br/><br/>
 
-                <label for="centerX">Center X:</label>
+                <label htmlFor= "centerX">Center X:</label>
                 <input type="number" id="sizeX" name="centerX" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'centerx')}}/>
 
-                <label for="centerY">Y:</label>
+                <label htmlFor= "centerY">Y:</label>
                 <input type="number" id="sizeY" name="centerY" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'centery')}}/>
 
-                <label for="centerZ">Z:</label>
+                <label htmlFor= "centerZ">Z:</label>
                 <input type="number" id="sizeZ" name="centerZ" step="any"  required
                   onChange={(e) => {handleFormEdit(e,'centerz')}}/>
 
