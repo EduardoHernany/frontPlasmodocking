@@ -11,7 +11,7 @@ export default  function Home(){
 
     return (
       <div className='bg-white'>
-      {session? <TabelaResultados userName={session.user?.name} /> : <></>}
+      {session? <TabelaResultados userName={session.user?.username} /> : <></>}
       </div>
       )
 }

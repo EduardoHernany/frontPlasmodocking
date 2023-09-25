@@ -1,5 +1,5 @@
 import CadastroForm from '../../componentes/forms/cadastro/CadastroForm'
-import { options } from '../../options'
+import { options } from '../../../service/options'
 import { getServerSession } from 'next-auth'
 
 

@@ -4,7 +4,7 @@ import * as React from 'react';
 import './styles.css'
 import { signOut } from 'next-auth/react';
 import { useSession } from "next-auth/react";
-
+import { TbBrandReact } from "react-icons/tb";
 function ResponsiveAppBar() {
   const { data: session } = useSession();
 
@@ -18,8 +18,10 @@ function ResponsiveAppBar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <Link href="/">LOGO</Link>
+      <div className="logo flex">
+      
+              <TbBrandReact className='mt-1 text-white' />
+            
           <span className='text-white mx-2'>AutodockGPUWeb</span>
       </div>
       <div className="menu">

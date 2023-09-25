@@ -22,7 +22,7 @@ ChartJS.register(
 
 const BarChart = ({ liganteNames, liganteEnergias }) => {
   // Limite máximo para a altura das barras
-  const maxBarHeight = 10;
+  const maxBarHeight = 5;
 
   // Processa os dados para garantir que nenhum valor exceda maxBarHeight
   const processedEnergias = liganteEnergias.map((energia) => Math.min(energia, maxBarHeight));
@@ -68,7 +68,7 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
   }, [liganteNames, liganteEnergias]);
 
   return (
-    <div className='w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-4 border rounded-lg bg-white'>
+    <div className='w-full md:col-span-2 relative lg:h-[60vh] h-[50vh] m-auto mt-0 p-4 border rounded-lg bg-white'>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );

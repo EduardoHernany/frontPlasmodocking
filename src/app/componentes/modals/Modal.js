@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
-import Barchart from '../graficos/BarChart';
+import Barchart from '../dashboard/graficos/BarChart';
 
 function Modal({ resultadoFinal, isOpen, onClose }) {
   const [objetoJson, setObjetoJson] = useState(null);

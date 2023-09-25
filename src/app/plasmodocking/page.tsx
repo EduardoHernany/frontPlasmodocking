@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div>
-      {session ? <PlasmoDockingForm userName={session.user?.name} /> : <></>}
+      {session ? <PlasmoDockingForm userName={session.user?.username} /> : <></>}
     </div>
   );
 }

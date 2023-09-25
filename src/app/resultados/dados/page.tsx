@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import BarChart from '../../componentes/graficos/BarChart'
+import BarChart from '../../componentes/dashboard/graficos/BarChart'
 import Dashboard from '../../componentes/dashboard/Dashboard'
 
 export default function Home() {
@@ -43,24 +43,10 @@ export default function Home() {
   }, [session]);
 
   return (
-    <div>
+    <div className='p-4 bg-gray-100 '>
+      
       <Dashboard resultadoFinal= {resultadoFinal}/>
 
-     
-      <h1>Dados do Item</h1>
-      <p>ID: {id}</p>
-      {item && (
-        <div>
-          {/* Renderize os dados do item aqui */}
-          <p>Nome: {item.nome}</p>
-          <p>User: {item.user}</p>
-          {/* Adicione mais campos conforme necessário */}
-        </div>
-      )}
-      
-        
-              
-      
     </div>
   );
 }

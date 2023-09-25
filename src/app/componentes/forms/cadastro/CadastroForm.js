@@ -7,11 +7,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default function Example() {
-  
   const [mensagem, setMensagem] = useState({
-    texto: 'Ja tem uma conta? Ir para login.'
+    texto: 'Já tem uma conta? Ir para login.',
   });
-  
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -21,7 +19,6 @@ export default function Example() {
   });
 
   const handleFormEdit = (event, name) => {
-    
     setFormData({
       ...formData,
       [name]: event.target.value,
@@ -29,42 +26,35 @@ export default function Example() {
   };
 
   const handleForm = async (event) => {
-    event.preventDefault(); // Evita que o formulário recarregue a página
-
-    
+    event.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api_cadastro/', {
+      const response = await fetch('/api/cadastro', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Envie o objeto formData como JSON
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-      console.log(data);
+      
 
       if (response.ok) {
         setMensagem({
-          texto: 'Usuario cadastrado com sucesso. Ir para o login'
+          texto: 'Usuário cadastrado com sucesso. Ir para o login.',
+        });
+      } else {
+        setMensagem({
+          texto: 'Já existe um usuário com esse username ou email.',
         });
       }
-
-      } catch (error) {
-        console.error(error);
-        setMensagem({
-          texto: 'Ja existe um Usuario com esse Username ou email.'
-        });
-        setFormData({
-          ...formData,
-          nome: '',
-          email: '',
-          nome_usuario: '',
-          password: '',
-        });
+    } catch (error) {
+      console.error(error);
+      setMensagem({
+        texto: 'Erro ao cadastrar usuário.',
+      });
     }
-
   };
 
   return (

@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
-import { options } from './options'
+import { options } from '../service/options'
 import { getServerSession } from 'next-auth'
 import Navbar from '@/app/componentes/geral/navbar/Navbar'
 import Navbarauth from '@/app/componentes/geral/navbar/Navbarauth'
