@@ -91,17 +91,27 @@ export default function Example() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex uppercase w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign in
+                  Logar
                 </button>
                 
               </div>
             </form>
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-6 text-center text-sm text-gray-500">
             
             <Link href="/auth/cadastro"> não possui conta? ir para cadastro.</Link>
           </p>
+          { /* 
+          <div className="mt-6 flex flex-col items-center">
+          <Link href={'/auth/cadastro'}>
+            <button className="flex w-44 uppercase justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              cadastrar
+            </button>
+            </Link>
+            
+          </div>
+          */}
              
           </div>
         </div>

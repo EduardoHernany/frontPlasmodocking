@@ -46,7 +46,7 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
       },
       title: {
         display: true,
-        text: '5jaz',
+        text: 'Macromolecula',
       },
     },
     maintainAspectRatio: false,

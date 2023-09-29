@@ -4,10 +4,11 @@ import { Inter } from 'next/font/google'
 
 import { options } from '../service/options'
 import { getServerSession } from 'next-auth'
-import Navbar from '@/app/componentes/geral/navbar/Navbar'
-import Navbarauth from '@/app/componentes/geral/navbar/Navbarauth'
+
+import Navbarauth from '@/app/componentes/geral/navbar/Navbar'
 import Footer from '@/app/componentes/geral/footer/footer'
 import Provider from '@/app/componentes/geral/Provider'
+import Sidebar from '@/app/componentes/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,10 +26,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+
         <Provider>
-          { session? <Navbarauth/> : <Navbar/>}
-          <div className='my-20'>{children}</div>
-            
+          <Navbarauth/> 
+            {session?.user?.role === 'ADMIN' ? <Sidebar> 
+              <div className='pt-10'>{children}</div> </Sidebar> : 
+              <div className='pt-10'>{children}</div> 
+            }
           <Footer/>
         </Provider>
       </body>

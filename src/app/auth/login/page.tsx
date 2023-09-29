@@ -1,4 +1,5 @@
 import LoginForm from '../../componentes/forms/login/LoginForm'
+import PlasmoDockingForm from '../../componentes/forms/plasmodocking/PlasmoDockingForm'
 import { options } from '../../../service/options'
 import { getServerSession } from 'next-auth'
 
@@ -12,7 +13,7 @@ export default async function Home(){
         
         {
        
-        session? <span>logado {session?.user?.name}</span> : <LoginForm/>
+        session? <PlasmoDockingForm userName={session.user?.username} /> : <LoginForm/>
         }
           
         </>

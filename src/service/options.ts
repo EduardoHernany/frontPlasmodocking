@@ -30,6 +30,7 @@ export const options: NextAuthOptions = {
               username: email,
             },
           });
+          await prisma.$disconnect();
           
           if (!user) {
             console.log('usuário nulo');
@@ -60,6 +61,8 @@ export const options: NextAuthOptions = {
             email: session.user.email,
           }
         });
+
+        await prisma.$disconnect();
 
         if (user) {
           session.user = {
