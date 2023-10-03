@@ -6,7 +6,7 @@ import { signOut, signIn } from 'next-auth/react';
 import { useSession } from "next-auth/react";
 import { TbBrandReact } from "react-icons/tb";
 import { RiReactjsFill } from "react-icons/ri";
-
+import Atom from '../../atom/Atom'
 
 function ResponsiveAppBar() {
   const { data: session } = useSession();
@@ -23,8 +23,8 @@ function ResponsiveAppBar() {
     <nav className="navbar border-b-2 border-black">
       <div className="logo flex">
       
-        <RiReactjsFill className=' w-6 h-6 text-white scale-500' />    
-        <span className='text-white mx-2'>AutodockGPUWeb</span>
+        <Atom />     
+        <span className='text-white mt-6 mx-2'>AutodockGPUWeb</span>
         
       </div>
       <div className="menu">

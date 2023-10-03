@@ -1,0 +1,131 @@
+:root {
+  --atomSize: 50px; /* Alterado para 30px */
+  --nucleusSize: 7px; /* Ajustado para 3px para manter a proporção */
+  --orbitSize: 45px; /* Ajustado para manter a proporção */
+  --electronSize: 3px; /* Ajustado para manter a proporção */
+  --protonColor: #ffffff;
+  --electronColor: #0EBEFF;
+  --orbitColor: rgb(255, 255, 255);
+}
+
+body {
+  text-align: center;
+  
+}
+
+#atom {
+  position: relative;
+  width: var(--atomSize);
+  height: var(--atomSize);
+  display: inline-block;
+  margin: 10px auto;
+}
+
+#nucleus,
+.orbit,
+.electron,
+.orbitTrain,
+.electronTrain {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--nucleusSize);
+  height: var(--nucleusSize);
+  border-radius: 50%;
+  margin: auto;
+}
+
+#nucleus {
+  background: var(--protonColor);
+  box-shadow: 0 0 15px var(--protonColor);
+  animation: shining 2s infinite linear;
+}
+
+.orbit:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.orbit {
+  width: var(--orbitSize);
+  height: var(--orbitSize);
+  border: 0;
+  transform-style: preserve-3d;
+  animation: orbitSpecial 1.5s infinite linear;
+}
+
+.electron {
+  position: relative;
+  top: calc((var(--orbitSize) - var(--electronSize)) / 2);
+  width: var(--electronSize);
+  height: var(--electronSize);
+  background: var(--electronColor);
+  box-shadow: 0 0 15px var(--electronColor);
+  border-radius: 50%;
+  transform: translateX(calc(var(--orbitSize) / 2));
+  animation: electronAnimation 1.5s infinite linear;
+}
+
+.orbit:nth-child(4) {
+  transform: rotateY(65deg) rotateX(5deg);
+  animation-delay: -1s;
+}
+
+.orbit:nth-child(2) {
+  transform: rotateY(65deg) rotateX(-54deg);
+  animation-delay: -1s;
+  animation-duration: 1s;
+}
+
+.orbit:nth-child(3) {
+  transform: rotateY(65deg) rotateX(54deg);
+}
+
+@keyframes electronAnimation {
+  0% {
+    transform: rotateZ(0deg) translateX(calc(var(--orbitSize) / 2)) rotateZ(-0deg) rotateY(-65deg);
+  }
+  100% {
+    transform: rotateZ(360deg) translateX(calc(var(--orbitSize) / 2)) rotateZ(-360deg) rotateY(-65deg);
+  }
+}
+
+@keyframes orbitSpecial {
+  0% {
+    border: 0;
+    border-top: 1px solid var(--orbitColor);
+  }
+  35% {
+    border: 0;
+    border-right: 1px solid var(--orbitColor);
+  }
+  70% {
+    border: 0;
+    border-bottom: 1px solid var(--orbitColor);
+  }
+  100% {
+    border: 0;
+    border-left: 1px solid var(--orbitColor);
+  }
+}
+
+@keyframes shining {
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 40px var(--protonColor);
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
+  }
+}
