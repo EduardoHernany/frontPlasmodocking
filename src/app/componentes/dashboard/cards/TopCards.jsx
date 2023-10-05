@@ -26,9 +26,9 @@ const TopCards = ({recOptions ,rec ,change, receptorData}) => {
             <div className='flex flex-col w-full pb-4'>
                 { receptorData ? 
                     <div>
-                        <p className='border-b-2 border-indigo-900  text-xl font-semibold'>Macrolmolecula: { receptorData.receptor_name }</p>
-                        <p className='pt-2 text-gray-600'>Ligante original: { receptorData.ligante_original }</p>
-                        <p className='text-gray-600'>Energia original: { receptorData.energia_original }</p>
+                        <p className='text-left border-b-2 border-indigo-900  text-xl font-semibold'>Macrolmolecula: { receptorData.receptor_name }</p>
+                        <p className='text-left pt-2 text-gray-600'>Ligante Redocking: { receptorData.ligante_original }</p>
+                        <p className='text-left text-gray-600'>Energia Redocking: { receptorData.energia_original }</p>
                     </div>
                 
                 : <div>
@@ -44,9 +44,9 @@ const TopCards = ({recOptions ,rec ,change, receptorData}) => {
             
             { receptorData ?
                 <div className='flex flex-col w-full pb-4'>
-                    <span className='text-black border-b-2 border-indigo-900 font-semibold text-xl'>GriBox Parametros</span>
-                    <span className='text-gray-600 pt-2 text-lg'>Size: {receptorData ? receptorData.grid_size : 'teste'} </span>
-                    <span className='text-gray-600 text-lg'>center: {receptorData ? receptorData.grid_center : 'teste'}</span>
+                    <span className='text-left text-black border-b-2 border-indigo-900 font-semibold text-xl'>GriBox Parametros</span>
+                    <span className='text-left text-gray-600 pt-2 text-lg'>Size: {receptorData ? receptorData.grid_size : 'teste'} </span>
+                    <span className='text-left text-gray-600 text-lg'>center: {receptorData ? receptorData.grid_center : 'teste'}</span>
                 </div>
             :   <div>
                 <span className='text-black font-semibold text-lg'>Macrolmolecula</span>

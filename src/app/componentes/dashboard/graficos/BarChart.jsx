@@ -24,8 +24,13 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
   // Limite máximo para a altura das barras
   const maxBarHeight = 5;
 
-  // Processa os dados para garantir que nenhum valor exceda maxBarHeight
-  const processedEnergias = liganteEnergias.map((energia) => Math.min(energia, maxBarHeight));
+  // Processa os dados para garantir que todos estejam no intervalo entre -5 e 5
+  const processedEnergias = liganteEnergias.map((energia) =>
+    Math.min(Math.max(energia, -maxBarHeight), maxBarHeight)
+  );
+
+  // Função para determinar a cor da barra com base no valor da energia
+  const getBarColor = (energia) => (energia < 0 ? 'rgb(38, 53, 84,0.9)' : 'rgb(102, 41, 128,0.8)');
 
   const [chartData, setChartData] = useState({
     labels: liganteNames,
@@ -33,8 +38,7 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
       {
         label: 'Energia',
         data: processedEnergias, // Use os valores processados
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgb(107, 33, 168)',
+        backgroundColor: processedEnergias.map(getBarColor), // Use a função para definir as cores
       },
     ],
   });
@@ -51,6 +55,23 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
     },
     maintainAspectRatio: false,
     responsive: true,
+    scales: {
+      x:{ticks: {
+        font: {
+          weight: 'bold', // Aplica negrito aos números do eixo Y
+        },
+      },
+    },
+      y: {
+        beginAtZero: true,
+        max: maxBarHeight, // Defina o valor máximo no eixo Y
+        ticks: {
+          font: {
+            weight: 'bold', // Aplica negrito aos números do eixo Y
+          },
+        },
+      },
+    },
   });
 
   useEffect(() => {
@@ -60,8 +81,7 @@ const BarChart = ({ liganteNames, liganteEnergias }) => {
         {
           label: 'Energia',
           data: processedEnergias, // Use os valores processados
-          borderColor: 'rgb(53, 162, 235)',
-          backgroundColor: 'rgb(107, 33, 168)',
+          backgroundColor: processedEnergias.map(getBarColor), // Use a função para definir as cores
         },
       ],
     });

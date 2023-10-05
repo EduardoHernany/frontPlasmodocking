@@ -22,8 +22,8 @@ console.log(ligantes.length)
                 <RiReactjsFill className='text-purple-800' />
               </div>
               <div className='pl-4'>
-                <p className='text-gray-800 '> {ligante.ligante_name}</p>
-                <p className='text-gray-400 text-sm'>Run: {ligante.run}</p>
+                <p className='text-gray-800 text-left '> {ligante.ligante_name}</p>
+                <p className='text-gray-400 text-left text-sm'>Run: {ligante.run}</p>
               </div>
               <p className='lg:flex md:hidden absolute text-gray-800 right-6 text-sm'>Energia: {ligante.ligante_energia}</p>
             </li>

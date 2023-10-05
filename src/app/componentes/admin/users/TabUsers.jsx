@@ -34,16 +34,16 @@ const TabUsers = () => {
       <div className='p-4'>
         <div className='w-full m-auto p-4 border rounded-lg bg-white overflow-y-auto'>
           <div className='my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-            <span>Name</span>
-            <span className='sm:text-left text-right'>Username</span>
-            <span className='hidden md:grid'>Status</span>
-            <span className='hidden sm:grid'>Role usuario</span>
+            <span className='sm:text-left'>Name</span>
+            <span className='sm:text-left '>Username</span>
+            <span className='sm:text-left hidden md:grid'>Status</span>
+            <span className='sm:text-left hidden sm:grid'>Role usuario</span>
           </div>
           <ul>
 
             {users.map((user, id) => (
                 <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer'>
-                    <div className='flex items-center'>
+                    <div className='sm:text-left flex items-center'>
                         <div className='bg-purple-100 p-3 rounded-lg'>
                             <BsPersonFill className='text-purple-800' />
                         </div>

@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import './styles.css';
 import Toast from '../../alerts/Toast'
@@ -56,9 +57,11 @@ export default function Example({ userName }) {
       <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
           <div>
-            <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
-              Nome do Processo :
-            </label>
+            <div className="flex items-center justify-between">
+              <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
+                Nome do Processo :
+              </label>
+            </div>
             <div className="mt-2">
               <input
                 required

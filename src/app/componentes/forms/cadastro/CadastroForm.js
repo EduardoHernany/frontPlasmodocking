@@ -71,10 +71,11 @@ export default function Example() {
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" onSubmit={handleForm} >
               
-              <div>
-                <label htmlFor="nomedeusuario" className="block text-sm font-medium leading-6 text-gray-900">
-                  Nome de usuario
-                </label>
+                <div><div className="flex items-center justify-between">
+                  <label htmlFor="nomedeusuario" className="block text-sm font-medium leading-6 text-gray-900">
+                    Nome de usuario
+                  </label>
+                </div>
                 <div className="mt-2">
                   <input
                     id="nomedeusuario"
@@ -91,10 +92,11 @@ export default function Example() {
 
 
 
-              <div>
-                <label htmlFor="nome" className="block text-sm font-medium leading-6 text-gray-900">
-                  Nome
-                </label>
+                <div><div className="flex items-center justify-between">
+                  <label htmlFor="nome" className="block text-sm font-medium leading-6 text-gray-900">
+                    Nome
+                  </label>
+                </div>
                 <div className="mt-2">
                   <input
                     id="nome"
@@ -109,10 +111,11 @@ export default function Example() {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Email
-                </label>
+                <div><div className="flex items-center justify-between">
+                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                    Email
+                  </label>
+                </div>
                 <div className="mt-2">
                   <input
                     id="email"
