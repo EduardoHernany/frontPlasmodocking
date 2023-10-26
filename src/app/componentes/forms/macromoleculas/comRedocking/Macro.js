@@ -98,7 +98,7 @@ export default function Example({ userName }) {
       <>
         {}
         <div className="bg-white flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <span className='text-black flex justify-center mx-80 py-5 border-b-2 border-indigo-500'><b>Macro</b></span>
+        <span className='text-black flex justify-center mx-80 py-5 border-b-2 border-indigo-500'><b>Preparação de Macromoleculas Com Redocking</b></span>
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
             <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
               

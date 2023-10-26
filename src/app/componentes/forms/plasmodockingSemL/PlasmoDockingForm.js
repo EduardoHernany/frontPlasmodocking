@@ -2,12 +2,24 @@
 import React, { useState } from "react";
 import './styles.css';
 import Toast from '../../alerts/Toast'
+import Alert from '../../alerts/Alert'
 
-
-export default function Example({ userName }) {
+const Example = ({ userName }) => {
   const [formData, setFormData] = useState({ nome: '', arquivo: null });
   const [isLoading, setIsLoading] = useState(false);
-  const [toastType, setToastType] = useState(null); 
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (type, message) => {
+    setAlert({ type, message });
+  };
+
+  const hideAlert = () => {
+    setAlert(null);
+  };
+
+  const removeAlert = (id) => {
+    setAlerts(alerts.filter((alert) => alert.id !== id));
+  };
 
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
@@ -37,29 +49,38 @@ export default function Example({ userName }) {
       console.log(responseData);
 
       if (response.ok) {
-        // Se a resposta for bem-sucedida, defina o tipo de Toast como "success"
-        setToastType('success');
+        showAlert('success', responseData.message)
       } else {
-        // Se a resposta não for bem-sucedida, defina o tipo de Toast como "error"
-        setToastType('error');
+        showAlert('error', responseData.message)
       }
     } catch (error) {
       console.error(error);
-      setToastType('error');
+      showAlert('error', error)
     }
-
     setIsLoading(false);
   };
 
+
   return (
-    <div className="bg-white h-[70vh] flex min-h-full flex-1 flex-col px-6 mt-20 lg:px-8">
-      <span className='text-black flex justify-center mx-80 py-5 border-b-2 border-indigo-900'><b>PlasmoDocking - {userName}</b></span>
+    <div className="bg-white h-[70vh] flex min-h-full flex-1 flex-col px-6 mb-5 mt-10 lg:px-8">
+      <span className="text-black flex justify-center mx-80 py-5 border-b-2 border-indigo-900">
+        <b>PlasmoDocking - {userName}</b>
+      </span>
+
+
       <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
+        <Alert
+          type={"success"}
+          message={"As macromoleculas do processo não tiveram verificação Redocking."}
+          onClose={hideAlert}
+          btnClose={false}
+        />
+        <form onSubmit={handleSubmit} className="space-y-6 " action="#" method="POST">
+          {/* Input de Nome do Processo */}
           <div>
             <div className="flex items-center justify-between">
               <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
-                Nome do Processo :
+                Nome do Processo:
               </label>
             </div>
             <div className="mt-2">
@@ -67,7 +88,7 @@ export default function Example({ userName }) {
                 required
                 id="nome_processo"
                 name="nome"
-                placeholder=" plasmodocking"
+                placeholder="plasmodocking"
                 type="text"
                 value={formData.nome}
                 onChange={handleInputChange}
@@ -76,16 +97,16 @@ export default function Example({ userName }) {
             </div>
           </div>
 
+          {/* Input de Arquivo */}
           <div>
             <div className="flex items-center justify-between">
-              <label htmlFor="file_processo" className="block text-sm font-medium leading-6 text-gray-900">Escolher arquivo:</label>
+              <label htmlFor="file_processo" className="block text-sm font-medium leading-6 text-gray-900">
+                Escolher arquivo:
+              </label>
             </div>
-
-            <div className="mt-2 w-full flex rounded-md border-0  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <div className="mt-2 w-full flex rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               <label htmlFor="inputTag" className="cursor-pointer flex w-40 justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                <span className="">
-                  Selecione o arquivo
-                </span>
+                <span>Selecione o arquivo</span>
                 <input
                   required
                   className="hidden"
@@ -96,24 +117,35 @@ export default function Example({ userName }) {
                   accept=".sdf"
                 />
               </label>
-              {formData.arquivo && <p className="text-gray-600 mt-2 ml-2">{formData.arquivo.name}</p>}
+              {formData.arquivo && (
+                <p className="text-gray-600 mt-2 ml-2">{formData.arquivo.name}</p>
+              )}
             </div>
           </div>
 
+          {/* Botão de Submissão */}
           <div>
             <button
               className="flex w-full justify-center rounded-md bg-slate-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              type="submit">Executar docagem.</button>
+              type="submit"
+            >
+              Executar docagem.
+            </button>
           </div>
-
         </form>
 
         {/* Renderize o Toast com base no tipo (success ou error) */}
-        {toastType === 'success' && <Toast type="success" message="Processo concluído com sucesso." />}
-        {toastType === 'error' && <Toast type="error" message="Ocorreu um erro durante o processo." />}
-        
+        {alert && (
+          <Alert
+            type={alert.type}
+            message={alert.message}
+            onClose={hideAlert}
+          />
+        )}
         {isLoading ? <div className="loader my-10" id="loader"></div> : <></>}
       </div>
     </div>
   );
-}
+};
+
+export default Example;

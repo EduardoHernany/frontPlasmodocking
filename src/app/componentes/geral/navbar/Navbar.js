@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { TbBrandReact } from "react-icons/tb";
 import { RiReactjsFill } from "react-icons/ri";
 import Atom from '../../atom/Atom'
+import DropdownsNavbar from '../../dropdowns/DropdownsNavbar'
 
 function ResponsiveAppBar() {
   const { data: session } = useSession();
@@ -19,6 +20,15 @@ function ResponsiveAppBar() {
     }
   }
 
+  const dropdownOptionsP = [
+    { label: 'Plasmodeocking Gama', descricao: 'Com validação redocking' ,link: '/plasmodocking' },
+    { label: 'Plasmodeocking Alfa', descricao: 'Sem validação redocking' ,link: '/plasmodockingSemRedocking' },
+  ];
+
+  const dropdownOptionsM = [
+    { label: 'Macromolecula com redocking', descricao: 'Preparação Macromolecula com redocking' ,link: '/macro_prepare/com_redocking' },
+    { label: 'Macromolecula sem redocking', descricao: 'Preparação Macromolecula sem redocking' ,link: '/macro_prepare/sem_redocking' },
+  ];
   return (
     <nav className="navbar border-b-2 border-black">
       <div className="logo flex">
@@ -29,12 +39,12 @@ function ResponsiveAppBar() {
       </div>
       <div className="menu">
         <div className="menu-links">
-        {session?.user.role === "ADMIN" ? <Link href="/plasmodocking">Administrador</Link> : <></>}
+        {session?.user.role === "ADMIN" ? <DropdownsNavbar title='Macromoleculas P' options={dropdownOptionsM}/> : <></>}
           <Link href="/">Home</Link>
           <Link href="#">About</Link>
           { session?
           <>
-            <Link href="/plasmodocking">PlasmoDocking</Link>
+            <DropdownsNavbar title='Plasmodocking' options={dropdownOptionsP}/>
             <Link href="/resultados">Resultados</Link>
           </> 
           : 
