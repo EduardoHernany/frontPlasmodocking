@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
-import * as React from 'react';
+
+import React, { useState } from 'react';
 import './styles.css'
 import { signOut, signIn } from 'next-auth/react';
 import { useSession } from "next-auth/react";
@@ -8,6 +9,7 @@ import { TbBrandReact } from "react-icons/tb";
 import { RiReactjsFill } from "react-icons/ri";
 import Atom from '../../atom/Atom'
 import DropdownsNavbar from '../../dropdowns/DropdownsNavbar'
+import LofinFormModal from '../../forms/login/LoginFormModal'
 
 function ResponsiveAppBar() {
   const { data: session } = useSession();
@@ -21,14 +23,17 @@ function ResponsiveAppBar() {
   }
 
   const dropdownOptionsP = [
-    { label: 'Plasmodeocking Gama', descricao: 'Com validação redocking' ,link: '/plasmodocking' },
-    { label: 'Plasmodeocking Alfa', descricao: 'Sem validação redocking' ,link: '/plasmodockingSemRedocking' },
+    { label: 'Plasmodeocking Gama', descricao: 'Com validação redocking' ,link: '/plasmodocking/comRedocking' },
+    { label: 'Plasmodeocking Alfa', descricao: 'Sem validação redocking' ,link: '/plasmodocking/semRedocking' },
   ];
 
   const dropdownOptionsM = [
     { label: 'Macromolecula com redocking', descricao: 'Preparação Macromolecula com redocking' ,link: '/macro_prepare/com_redocking' },
     { label: 'Macromolecula sem redocking', descricao: 'Preparação Macromolecula sem redocking' ,link: '/macro_prepare/sem_redocking' },
   ];
+
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  
   return (
     <nav className="navbar border-b-2 border-black">
       <div className="logo flex">
@@ -55,7 +60,7 @@ function ResponsiveAppBar() {
           ? <button onClick={()=> signOut()} className="log-in">Logout</button> 
           : <button onClick={()=> signIn()} className="log-in">Log In</button>
         }
-        
+        <LofinFormModal />
       </div>
       <div className="menu-btn">
         

@@ -43,7 +43,7 @@ export default function Home() {
   }, [session]);
 
   return (
-    <div className='p-4 bg-gray-100 '>
+    <div className='p-4 mt-8 bg-gray-100 '>
       
       <Dashboard resultadoFinal= {resultadoFinal}/>
 

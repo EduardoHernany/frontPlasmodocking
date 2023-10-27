@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import PlasmoDockingForm from '../componentes/forms/plasmodockingSemL/PlasmoDockingForm'
+import PlasmoDockingForm from '../../componentes/forms/plasmodocking/PlasmoDockingForm'
 import { useSession } from 'next-auth/react'
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div>
-      {session ? <PlasmoDockingForm userName={session.user?.username} /> : <></>}
+      {session ? <PlasmoDockingForm emailUser={session.user?.email} userName={session.user?.username} /> : <></>}
     </div>
   );
 }

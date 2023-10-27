@@ -54,8 +54,8 @@ const BarChart = ({ liganteNames, liganteEnergias, chartKey }) => {
       },
       {
         type: 'line', // Usar "line" para o gráfico de linha
-        label: 'Linha de Exemplo',
-        data: Array(liganteNames.length).fill(-10), // Valores constantes de -10 para o gráfico de linha
+        label: 'Menor energia Redocking: -15',
+        data: Array(liganteNames.length).fill(-15), // Valores constantes de -10 para o gráfico de linha
         borderColor: 'rgb(255, 99, 132)',
         borderWidth: 1,
         fill: false,
@@ -76,8 +76,8 @@ const BarChart = ({ liganteNames, liganteEnergias, chartKey }) => {
         },
         {
           type: 'line',
-          label: 'Menor energia Redocking',
-          data: Array(liganteNames.length).fill(-10),
+          label: 'Menor energia Redocking: -15',
+          data: Array(liganteNames.length).fill(-15),
           backgroundColor: 'rgb(255, 99, 132, 0.5)', 
           borderColor: 'rgb(255, 99, 132)',
           borderWidth: 1,

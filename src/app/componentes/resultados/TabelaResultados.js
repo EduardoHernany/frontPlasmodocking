@@ -78,7 +78,7 @@ function YourComponent({ userName }) {
               <div className="flex min-w-0 gap-x-4 border-b-2 border-indigo-900">
                 <div className="min-w-0 flex-auto">
                   <p className="text-sm flex font-semibold leading-6 text-gray-900">{item.nome}</p>
-                  <p className="mt-1 truncate text-xs leading-5 text-gray-500">{item.data}</p>
+                  <p className="mt-1 truncate text-xs leading-5 text-gray-500">{item?.formatted_data}</p>
                   <p className="text-sm leading-6 text-gray-900">
 
                   </p>
@@ -87,6 +87,7 @@ function YourComponent({ userName }) {
 
               <div className={`hidden shrink-0 sm:flex sm:flex-col sm:items-end border-r-8 rounded-md pr-5 ${item.status ? 'border-green-600' : 'border-red-600'} `}>
                 <Dropdowns options={dropdownOptions} idItem={item.id} onDeleteSuccess={handleDeleteSuccess} />
+                <p className="mt-1 truncate text-xs leading-5 text-gray-500" >{item?.type}</p>
               </div>
             </li>
           )) :

@@ -13,7 +13,7 @@ export default async function Home(){
         
         {
        
-        session? <PlasmoDockingForm userName={session.user?.username} /> : <LoginForm/>
+        session? <PlasmoDockingForm emailUser={session.user?.email} userName={session.user?.username} /> : <LoginForm/>
         }
           
         </>

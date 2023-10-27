@@ -78,7 +78,7 @@ export const options: NextAuthOptions = {
   },
   
   pages: {
-    signIn: 'http://192.168.0.103:3000/auth/login'
+    signIn: 'http://localhost:3000/auth/login'
   },
   session: {
     strategy: 'jwt'

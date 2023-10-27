@@ -18,15 +18,23 @@ console.log(ligantes.length)
         <ul>
           {ligantes.map((ligante, id) => (
             <li key={id} className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 flex items-center cursor-pointer'>
-              <div className='bg-purple-100 rounded-lg p-3'>
-                <RiReactjsFill className='text-purple-800' />
-              </div>
-              <div className='pl-4'>
-                <p className='text-gray-800 text-left '> {ligante.ligante_name}</p>
+            <div className='bg-purple-100 rounded-lg p-2'>
+              <RiReactjsFill size={25} className='text-purple-800' />
+            </div>
+          
+            <div className='pl-2 flex-grow'> {/* Usar flex-grow para que este div ocupe todo o espaço disponível */}
+              <div>
+                <p className='text-gray-800 text-left'>{ligante.ligante_name}</p>
                 <p className='text-gray-400 text-left text-sm'>Run: {ligante.run}</p>
               </div>
-              <p className='lg:flex md:hidden absolute text-gray-800 right-6 text-sm'>Energia: {ligante.ligante_energia}</p>
-            </li>
+            </div>
+          
+            <div className='flex flex-col items-end'>
+              <p className='text-gray-800 text-sm'>Energia</p>
+              <p className='text-gray-700 text-sm'>{ligante.ligante_energia} kcal/mol</p>
+            </div>
+          </li>
+          
           ))}
         </ul>
         : <div>

@@ -47,10 +47,10 @@ const Dropdown = ({ options, title }) => {
                   </svg>
                 </div>
 
-                <div className="flex-auto ">
-                  <div >
-                    <span className='text-black'>{option.label} </span>
-                    <p className="my-1 text-gray-600">{option.descricao}</p>
+                <div className="">
+                  <div className='flex pl-2 flex-col items-start'>
+                    <span className=' text-black'>{option.label} </span>
+                    <p className=" text-gray-600">{option.descricao}</p>
                   </div>
 
                 </div>

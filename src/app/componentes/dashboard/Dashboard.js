@@ -43,11 +43,15 @@ function Dashboard({ resultadoFinal }) {
       <div className="">
         <TopCards recOptions={receptorOptions} rec={selectedReceptor} change={handleSelectChange} receptorData={selectedReceptorData} />
 
-        <div className='p-4 grid md:grid-cols-3 grid-cols-1 gap-4'>
+        <div className='p-4 grid md:grid-cols-4 grid-cols-1 gap-2'> {/* Ajuste para 4 colunas */}
           {resultadoFinal && (
-            <BarChart key={chartKey} liganteNames={nameObj} liganteEnergias={energiaObj} />
+            <div className='md:col-span-3 col-span-1'> {/* Ajuste para 3 colunas */}
+              <BarChart key={chartKey} liganteNames={nameObj} liganteEnergias={energiaObj} style={{ height: '400px' }} /> {/* Defina um estilo para aumentar o tamanho */}
+            </div>
           )}
-          <TabelaLigantes ligantes={ligantesParaReceptor} />
+          <div className='md:col-span-1 col-span-1'> {/* Ajuste para 1 coluna */}
+            <TabelaLigantes ligantes={ligantesParaReceptor} style={{ height: '400px' }} /> {/* Defina um estilo para aumentar o tamanho */}
+          </div>
         </div>
       </div>
     </>

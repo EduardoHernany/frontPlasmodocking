@@ -4,7 +4,7 @@ import './styles.css';
 import Toast from '../../alerts/Toast'
 import Alert from '../../alerts/Alert'
 
-const Example = ({ userName }) => {
+const Example = ({emailUser, userName }) => {
   const [formData, setFormData] = useState({ nome: '', arquivo: null });
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -38,6 +38,8 @@ const Example = ({ userName }) => {
     data.append('nome', nome);
     data.append('arquivo', arquivo);
     data.append('username', userName);
+    data.append('type', "Sem Redocking");
+    data.append('email_user', emailUser);
 
     try {
       const response = await fetch('http://127.0.0.1:8000/VS_doking/', {
@@ -62,13 +64,13 @@ const Example = ({ userName }) => {
 
 
   return (
-    <div className="bg-white h-[70vh] flex min-h-full flex-1 flex-col px-6 mb-5 mt-10 lg:px-8">
+    <div className="bg-white h-[70vh] flex min-h-full flex-1 flex-col px-6 mb-5 m-16 lg:px-8">
       <span className="text-black flex justify-center mx-80 py-5 border-b-2 border-indigo-900">
         <b>PlasmoDocking - {userName}</b>
       </span>
 
 
-      <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="m-5 sm:mx-auto sm:w-full sm:max-w-sm">
         <Alert
           type={"success"}
           message={"As macromoleculas do processo não tiveram verificação Redocking."}

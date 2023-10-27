@@ -4,7 +4,7 @@ import './styles.css';
 import Toast from '../../alerts/Toast'
 import Alert from '../../alerts/Alert'
 
-const Example = ({ userName }) => {
+const Example = ({emailUser, userName }) => {
   const [formData, setFormData] = useState({ nome: '', arquivo: null });
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -38,6 +38,8 @@ const Example = ({ userName }) => {
     data.append('nome', nome);
     data.append('arquivo', arquivo);
     data.append('username', userName);
+    data.append('type', "Com Redocking");
+    data.append('email_user', emailUser);
 
     try {
       const response = await fetch('http://127.0.0.1:8000/VS_doking/', {
