@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 
-import TabUsers from '../../componentes/admin/users/TabUsers'
+import TabUsers from '@/app/componentes/admin/users/TabUsers'
 
 export default function Home() {
  

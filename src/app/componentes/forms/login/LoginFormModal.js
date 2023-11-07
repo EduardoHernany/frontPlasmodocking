@@ -110,7 +110,7 @@ export default function Example() {
                   </button>
 
                   <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    <Link onClick={closeModal} href="/auth/cadastro"> não possui conta? ir para cadastro.</Link>
+                    <Link onClick={closeModal} href="/pages/auth/cadastro"> não possui conta? ir para cadastro.</Link>
                   </div>
                 </form>
               </div>

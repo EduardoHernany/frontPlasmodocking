@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import BarChart from '../../componentes/dashboard/graficos/BarChart'
-import Dashboard from '../../componentes/tabelaDados/TabDados'
+import BarChart from '@/app/componentes/dashboard/graficos/BarChart'
+import Dashboard from '@/app/componentes/tabelaDados/TabDados'
 
 export default function Home() {
   const { data: session } = useSession({

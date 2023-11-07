@@ -102,7 +102,7 @@ export default function Example() {
             </form>
             <p className="mt-6 text-center text-sm text-gray-500">
             
-            <Link href="/auth/cadastro"> não possui conta? ir para cadastro.</Link>
+            <Link href="/pages/auth/cadastro"> não possui conta? ir para cadastro.</Link>
           </p>
           { /* 
           <div className="mt-6 flex flex-col items-center">

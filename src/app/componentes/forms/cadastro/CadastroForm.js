@@ -165,7 +165,7 @@ export default function Example() {
   
             <p className="mt-10 text-center text-sm text-gray-500">
             
-            <Link href="/auth/login"> {mensagem.texto}</Link>
+            <Link href="/pages/auth/login"> {mensagem.texto}</Link>
           </p>
           </div>
         </div>

@@ -23,13 +23,13 @@ function ResponsiveAppBar() {
   }
 
   const dropdownOptionsP = [
-    { label: 'Plasmodeocking Gama', descricao: 'Com validação redocking' ,link: '/plasmodocking/comRedocking' },
-    { label: 'Plasmodeocking Alfa', descricao: 'Sem validação redocking' ,link: '/plasmodocking/semRedocking' },
+    { label: 'Plasmodeocking Gama', descricao: 'Com validação redocking' ,link: '/pages/plasmodocking/comRedocking' },
+    { label: 'Plasmodeocking Alfa', descricao: 'Sem validação redocking' ,link: '/pages/plasmodocking/semRedocking' },
   ];
 
   const dropdownOptionsM = [
-    { label: 'Macromolecula com redocking', descricao: 'Preparação Macromolecula com redocking' ,link: '/macro_prepare/com_redocking' },
-    { label: 'Macromolecula sem redocking', descricao: 'Preparação Macromolecula sem redocking' ,link: '/macro_prepare/sem_redocking' },
+    { label: 'Macromolecula com redocking', descricao: 'Preparação Macromolecula com redocking' ,link: '/pages/macro_prepare/com_redocking' },
+    { label: 'Macromolecula sem redocking', descricao: 'Preparação Macromolecula sem redocking' ,link: '/pages/macro_prepare/sem_redocking' },
   ];
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -46,11 +46,11 @@ function ResponsiveAppBar() {
         <div className="menu-links">
         {session?.user.role === "ADMIN" ? <DropdownsNavbar title='Macromoleculas P' options={dropdownOptionsM}/> : <></>}
           <Link href="/">Home</Link>
-          <Link href="#">About</Link>
+          <Link href="/">About</Link>
           { session?
           <>
             <DropdownsNavbar title='Plasmodocking' options={dropdownOptionsP}/>
-            <Link href="/resultados">Resultados</Link>
+            <Link href="/pages/resultados">Resultados</Link>
           </> 
           : 
           <></>
@@ -58,13 +58,11 @@ function ResponsiveAppBar() {
         </div>
         { session 
           ? <button onClick={()=> signOut()} className="log-in">Logout</button> 
-          : <button onClick={()=> signIn()} className="log-in">Log In</button>
+          : <LofinFormModal />
         }
-        <LofinFormModal />
-      </div>
-      <div className="menu-btn">
         
       </div>
+      
     </nav>
   );
 }

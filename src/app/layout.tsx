@@ -31,8 +31,8 @@ export default async function RootLayout({
         <Provider>
           <Navbarauth/> 
             {session?.user?.role === 'ADMIN' ? <Sidebar> 
-              <div className='mt-5'>{children}</div> </Sidebar> : 
-              <div className='pt-10'>{children}</div> 
+              <div className='pt-12'>{children}</div> </Sidebar> : 
+              <div className='pt-12'>{children}</div> 
             }
           <Footer/>
         </Provider>

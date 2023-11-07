@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Macro from '../../app/componentes/forms/macromoleculas/semRedocking/Macro'
+import PlasmoDockingForm from '@/app/componentes/forms/plasmodocking/plasmodockingComRedocking/PlasmoDockingForm'
 import { useSession } from 'next-auth/react'
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div>
-      {session ? <Macro userName={session.user?.name} /> : <></>}
+      {session ? <PlasmoDockingForm emailUser={session.user?.email} userName={session.user?.username} /> : <></>}
     </div>
   );
 }

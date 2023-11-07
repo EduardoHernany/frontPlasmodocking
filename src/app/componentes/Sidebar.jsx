@@ -23,7 +23,7 @@ const Sidebar = ({ children }) => {
             </button>
           
           <span className='border-b-[1px] border-gray-200 w-full p-2'></span>
-          <Link href='/adm/users'>
+          <Link href='/pages/adm/users'>
             <div className='flex flex-row items-center'>
               <div className='bg-gray-100  hover:bg-gray-200 cursor-pointer my-4 p-2 rounded-lg inline-block'>
                 <RxPerson size={18} />
@@ -31,7 +31,7 @@ const Sidebar = ({ children }) => {
               {isSidebarExpanded && <span className='ml-2' >teste</span>}
             </div>
           </Link>
-          <Link href='/adm/proces'>
+          <Link href='/pages/adm/proces'>
           <div className='flex flex-row items-center'>
             <div className='bg-gray-100  hover:bg-gray-200 cursor-pointer my-4 p-2 rounded-lg inline-block'>
               <RxDashboard size={18} />

@@ -1,6 +1,6 @@
-import LoginForm from '../../componentes/forms/login/LoginForm'
-import PlasmoDockingForm from '../../componentes/forms/plasmodocking/PlasmoDockingForm'
-import { options } from '../../../service/options'
+import LoginForm from '@/app/componentes/forms/login/LoginForm'
+import PlasmoDockingForm from '@/app/componentes/forms/plasmodocking/plasmodockingComRedocking/PlasmoDockingForm'
+import { options } from '@/service/options'
 import { getServerSession } from 'next-auth'
 
 

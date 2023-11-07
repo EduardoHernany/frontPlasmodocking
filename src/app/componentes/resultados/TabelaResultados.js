@@ -47,8 +47,8 @@ function YourComponent({ userName }) {
   const dropdownOptions = [
     { label: 'Deletar', action: 'delete' },
     { label: 'Baixar', action: 'download' },
-    { label: 'Ver Dashboard', link: '/resultados/dados?id=' },
-    { label: 'Ver Tabela', link: '/resultados/tabela?id=' },
+    { label: 'Ver Dashboard', link: '/pages/resultados/dados?id=' },
+    { label: 'Ver Tabela', link: '/pages/resultados/tabela?id=' },
   ];
 
 

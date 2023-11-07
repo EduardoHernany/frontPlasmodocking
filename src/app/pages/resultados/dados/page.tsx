@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import BarChart from '../../componentes/dashboard/graficos/BarChart'
-import Dashboard from '../../componentes/dashboard/Dashboard'
+import BarChart from '@/app/componentes/dashboard/graficos/BarChart'
+import Dashboard from '@/app/componentes/dashboard/Dashboard'
 
 export default function Home() {
   const { data: session } = useSession({
@@ -43,7 +43,7 @@ export default function Home() {
   }, [session]);
 
   return (
-    <div className='p-4 mt-8 bg-gray-100 '>
+    <div className='p-4  bg-gray-100 '>
       
       <Dashboard resultadoFinal= {resultadoFinal}/>
 

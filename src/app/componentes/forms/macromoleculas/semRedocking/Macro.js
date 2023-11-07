@@ -3,11 +3,20 @@ import Link from "next/link"
 import { useState } from "react"
 import './styles.css'
 
-
+import Alert from '../../../alerts/Alert'
 
 export default function Example({ userName }) {
+  const [alert, setAlert] = useState(true);
+  const showAlert = (type, message) => {
+    setAlert({ type, message });
+  };
+
+  const hideAlert = () => {
+    setAlert(null);
+  };
 
   const [formData, setFormData] = useState({
+    processo_name: '',
     nome: '',
     rec: '',
     sizex: '',
@@ -40,21 +49,16 @@ export default function Example({ userName }) {
     setReceptorpdbqt(selectedFile);
   };
 
-
-
-
-
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const loader = document.getElementById('loader');
     loader.style.display = 'block';
-
     const formDataObject = new FormData();
+
     const gridcenter = `${formData.centerx},${formData.centery},${formData.centerz}`;
     const gridsize = `${formData.sizex},${formData.sizey},${formData.sizez}`;
 
+    formDataObject.append('processo_name', formData.processo_name);
     formDataObject.append('nome', formData.nome);
     formDataObject.append('rec', formData.rec);
     formDataObject.append('gridcenter', gridcenter);
@@ -62,8 +66,6 @@ export default function Example({ userName }) {
     formDataObject.append('receptorpdb', receptorpdb);
     formDataObject.append('receptorpdbqt', receptorpdbqt);
 
-
-    // Now you can use formDataObject to send your data to the API
     console.log(formDataObject);
 
     try {
@@ -98,27 +100,40 @@ export default function Example({ userName }) {
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
           <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
 
-            <div>
-              <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
-                Nome da macromolecula :
+          <div>
+              <label htmlFor="nome_processo" className="flex justify-between text-sm font-medium leading-6 text-gray-900">
+                Nome do processo :
               </label>
               <div className="mt-2">
                 <input required id="nome_processo" name="nome_processo" placeholder=" plasmodocking"
-                  type="text" value={formData.nome} onChange={(e) => { handleFormEdit(e, 'nome') }}
-                  className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  type="text" value={formData.nome} onChange={(e) => { handleFormEdit(e, 'processo_name') }}
+                  className="flex justify-between w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
 
             <div>
-              <label htmlFor="nome_processo" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="nome_processo" className="flex justify-between text-sm font-medium leading-6 text-gray-900">
+                Nome da macromolecula :
+              </label>
+              <div className="mt-2">
+                <input required id="nome_processo" name="nome_processo" placeholder=" plasmodocking"
+                  type="text" value={formData.nome} onChange={(e) => { handleFormEdit(e, 'nome') }}
+                  className="flex justify-between w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+
+            <div>
+              <label htmlFor="nome_processo" className="flex justify-between text-sm font-medium leading-6 text-gray-900">
                 Rec :
               </label>
               <div className="mt-2">
                 <input required id="nome_processo" name="nome_processo" placeholder=" plasmodocking"
                   type="text" value={formData.rec} onChange={(e) => { handleFormEdit(e, 'rec') }}
-                  className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="flex justify-between w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -126,11 +141,11 @@ export default function Example({ userName }) {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="file_processo" className="block text-sm font-medium leading-6 text-gray-900">Receptor pdb:</label>
+                <label htmlFor="file_processo" className="flex justify-between text-sm font-medium leading-6 text-gray-900">Receptor pdb:</label>
               </div>
               <div className="mt-2 ">
                 <input
-                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className=" flex justify-between w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   id="file_processo" name="file_processo" type="file" onChange={handleReceptorpdb} accept=".pdb"
                 />
               </div>
@@ -139,11 +154,11 @@ export default function Example({ userName }) {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="file_processo" className="block text-sm font-medium leading-6 text-gray-900">Receptor pdbqt:</label>
+                <label htmlFor="file_processo" className="flex justify-between text-sm font-medium leading-6 text-gray-900">Receptor pdbqt:</label>
               </div>
               <div className="mt-2 ">
                 <input
-                  className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className=" flex justify-between w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   id="file_processo" name="file_processo" type="file" onChange={handleReceptorpdbqt} accept=".pdbqt"
                 />
               </div>
@@ -192,6 +207,14 @@ export default function Example({ userName }) {
             </div>
 
           </form>
+
+          {alert && (
+          <Alert
+            type={"error"}
+            message={"alert.message"}
+            onClose={hideAlert}
+          />
+        )}
 
           <div className="loader my-10" id="loader"></div>
 
