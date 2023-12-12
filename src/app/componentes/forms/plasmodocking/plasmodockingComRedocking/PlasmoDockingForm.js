@@ -83,7 +83,7 @@ const Example = ({ emailUser, userName }) => {
                 required
                 id="nome_processo"
                 name="nome"
-                placeholder="plasmodocking"
+                pattern="[a-zA-Z0-9_]*"
                 type="text"
                 value={formData.nome}
                 onChange={handleInputChange}
