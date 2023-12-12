@@ -16,10 +16,14 @@ function Dashboard({ resultadoFinal }) {
                 {resultadoFinal.map((item, index) => (
                   <div key={index}>
                     <ul className='border-b-2 border-indigo-900 py-0.5 font-semibold flex flex-col items-center'>
+                      {item.rmsd_redocking ? 
                       <li  key={0} className=''>Receptor: {item.receptor_name} | Ligante: {item.ligante_original} | 
                             RMSD Redocking: {item.rmsd_redocking} A | Energia: {item.energia_original} 
                             kcal/mol | Gridsize: {item.grid_size} | Gridcenter: {item.grid_center} 
                       </li >
+                      :
+                      <li  key={0} className=''>Receptor: {item.receptor_name} | Gridsize: {item.grid_size} | Gridcenter: {item.grid_center} </li >
+                      }
                     </ul>
                     <div className="text-center flex flex-col items-center  m-auto mt-5">
                       <table className="w-96 ">

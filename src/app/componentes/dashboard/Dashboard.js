@@ -11,6 +11,7 @@ function Dashboard({ resultadoFinal }) {
   const [energiaObj, setEnergiaObj] = useState([]);
   const [selectedReceptorData, setSelectedReceptorData] = useState(null);
   const [chartKey, setChartKey] = useState(0); // Adicione uma chave de componente
+  const [energiaRedocking, setEnergiaRedocking]= useState(0);
 
   useEffect(() => {
     if (resultadoFinal) {
@@ -25,11 +26,11 @@ function Dashboard({ resultadoFinal }) {
       setEnergiaObj(liganteEnergias);
 
       setSelectedReceptorData(receptorData);
-
+      setEnergiaRedocking(receptorData?.energia_original)
       // Atualize a chave do componente para forçar a recriação do gráfico
       setChartKey((prevKey) => prevKey + 1);
     }
-  }, [selectedReceptor, resultadoFinal]);
+  }, [selectedReceptor, resultadoFinal, energiaRedocking]);
 
   const receptorOptions = resultadoFinal?.map((item) => item.receptor_name);
 
@@ -46,7 +47,7 @@ function Dashboard({ resultadoFinal }) {
         <div className='p-4 grid md:grid-cols-4 grid-cols-1 gap-2'> {/* Ajuste para 4 colunas */}
           {resultadoFinal && (
             <div className='md:col-span-3 col-span-1'> {/* Ajuste para 3 colunas */}
-              <BarChart key={chartKey} liganteNames={nameObj} liganteEnergias={energiaObj} style={{ height: '400px' }} /> {/* Defina um estilo para aumentar o tamanho */}
+              <BarChart key={chartKey} liganteNames={nameObj} liganteEnergias={energiaObj} energiaRedocking={energiaRedocking} style={{ height: '400px' }} /> {/* Defina um estilo para aumentar o tamanho */}
             </div>
           )}
           <div className='md:col-span-1 col-span-1'> {/* Ajuste para 1 coluna */}

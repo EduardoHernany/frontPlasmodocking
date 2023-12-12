@@ -27,8 +27,13 @@ const TopCards = ({recOptions ,rec ,change, receptorData}) => {
                 { receptorData ? 
                     <div>
                         <p className='text-left border-b-2 border-indigo-900  text-xl font-semibold'>Macrolmolecula: { receptorData.receptor_name }</p>
-                        <p className='text-left pt-2 text-gray-600'>Ligante Redocking: { receptorData.ligante_original }</p>
-                        <p className='text-left text-gray-600'>Energia Redocking: { receptorData.energia_original }</p>
+                        {receptorData.ligante_original ?
+                        <>
+                            <p className='text-left pt-2 text-gray-600'>Ligante Redocking: { receptorData.ligante_original }</p>
+                            <p className='text-left text-gray-600'>Energia Redocking: { receptorData.energia_original }</p>
+                            </>
+                            : <p className='text-left pt-2 text-gray-600'> Processo sem validação Redocking.</p>
+                        }
                     </div>
                 
                 : <div>

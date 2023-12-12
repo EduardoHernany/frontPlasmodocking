@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
-
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,7 +13,6 @@ import {
   PointElement,
 } from 'chart.js';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,112 +20,104 @@ ChartJS.register(
   Title,
   LineElement,
   Tooltip,
-  Legend, 
+  Legend,
   PointElement
 );
-const BarChart = ({ liganteNames, liganteEnergias, chartKey }) => {
-  // Limite máximo para a altura das barras
-  const maxBarHeight = 15;
 
-  // Processa os dados para garantir que nenhum valor exceda maxBarHeight
-  const processedEnergias = liganteEnergias.map((energia) => Math.min(energia, maxBarHeight));
+const MAX_BAR_HEIGHT = 14.5;
+const MIN_Y_VALUE = -15;
+const MAX_Y_VALUE = 15;
 
-  // Verifique se há valores de energia negativos em processedEnergias
-  const hasNegativeEnergy = processedEnergias.some((energia) => energia < 0);
-
-  // Determine o mínimo com base na presença de valores negativos
-  const minY = hasNegativeEnergy
-    ? Math.trunc(Math.min(...processedEnergias) - 2)
-    : -2;
-
-  // Função para determinar a cor da barra com base no valor da energia
-  const getBarColor = (energia) => (energia < 0 ? 'rgb(38, 53, 84,0.8)' : 'rgb(102, 41, 128,0.8)');
- 
-  const [chartData, setChartData] = useState({
-    labels: liganteNames,
-    datasets: [
-      {
-        type: 'bar', // Usar "bar" para o gráfico de barra
-        label: 'Energia',
-        data: processedEnergias,
-        backgroundColor: processedEnergias.map(getBarColor),
+const chartOptions = {
+  plugins: {
+    legend: { position: 'top' },
+    title: { display: true, text: 'Macromolecula' },
+  },
+  maintainAspectRatio: false,
+  responsive: true,
+  scales: {
+    x: { ticks: { font: { weight: 'bold' } } },
+    y: {
+      beginAtZero: true,
+      min: MIN_Y_VALUE,
+      max: MAX_Y_VALUE,
+      ticks: { font: { weight: 'bold' } },
+      grid: {
+        drawBorder: false,
+        color: function(context) {
+          if (context.tick.value === 0) {
+            return 'rgba(0, 0, 0, 0.5)'; // Cor para a linha do valor 0
+          } else {
+            return 'rgba(0, 0, 0, 0.1)'; // Cor para as outras linhas
+          }
+        },
+        lineWidth: function(context) {
+          return context.tick.value === 0 ? 2 : 1; // Largura da linha para o valor 0
+        },
       },
-      {
-        type: 'line', // Usar "line" para o gráfico de linha
-        label: 'Menor energia Redocking: -15',
-        data: Array(liganteNames.length).fill(-15), // Valores constantes de -10 para o gráfico de linha
-        borderColor: 'rgb(255, 99, 132)',
-        borderWidth: 1,
-        fill: false,
-        pointStyle: false, 
-      },
-    ],
-  });
+    },
+  },
+};
+
+
+const BarChart = ({ liganteNames, liganteEnergias, chartKey, energiaRedocking }) => {
+  const chartData = useMemo(() => {
+    const datasets = [];
   
-  useEffect(() => {
-    setChartData({
+    const positiveEnergias = liganteEnergias.map(energia => energia > 0 ? energia : null);
+    const negativeEnergias = liganteEnergias.map(energia => energia < 0 ? energia : null);
+  
+    if (positiveEnergias.some(energia => energia !== null)) {
+      datasets.push({
+        type: 'bar',
+        label: 'Energia Positiva',
+        data: positiveEnergias,
+        backgroundColor: 'rgba(0, 0, 255, 0.8)',
+      });
+    }
+  
+    if (negativeEnergias.some(energia => energia !== null)) {
+      datasets.push({
+        type: 'bar',
+        label: 'Energia Negativa',
+        data: negativeEnergias,
+        backgroundColor: 'rgba(255, 0, 0, 0.8)',
+      });
+    }
+  
+    if (energiaRedocking !== undefined) {
+      datasets.push({
+        type: 'line',
+        label: `Menor energia Redocking: ${energiaRedocking}`,
+        data: Array(liganteNames.length).fill(energiaRedocking),
+        backgroundColor: 'rgba(0, 0, 0, 1)',
+        fill: false,
+        borderColor: 'rgb(0,0,0)',
+        borderWidth: 3,
+        borderDash: [3, 5],
+        pointStyle: false,
+      });
+    }
+  
+    return {
       labels: liganteNames,
-      datasets: [
-        {
-          type: 'bar',
-          label: 'Energia',
-          data: processedEnergias,
-          backgroundColor: processedEnergias.map(getBarColor),
-        },
-        {
-          type: 'line',
-          label: 'Menor energia Redocking: -15',
-          data: Array(liganteNames.length).fill(-15),
-          backgroundColor: 'rgb(255, 99, 132, 0.5)', 
-          borderColor: 'rgb(255, 99, 132)',
-          borderWidth: 1,
-          fill: false,
-          pointStyle: false, // Remover os pontos do gráfico de linha
-        },
-      ],
-    });
-  }, [liganteNames, liganteEnergias, chartKey]); 
-
-  const [chartOptions, setChartOptions] = useState({
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Macromolecula',
-      },
-    },
-    maintainAspectRatio: false,
-    responsive: true,
-    scales: {
-      x: {
-        ticks: {
-          font: {
-            weight: 'bold',
-          },
-        },
-      },
-      y: {
-        beginAtZero: true,
-        min: -16, // Defina o valor mínimo no eixo Y com base no cálculo acima
-        max: 16,
-        ticks: {
-          font: {
-            weight: 'bold',
-          },
-        },
-      },
-    },
-  });
-
-
+      datasets,
+    };
+  }, [liganteNames, liganteEnergias, energiaRedocking]);
+  
 
   return (
     <div className='w-full md:col-span-2 relative lg:h-[60vh] h-[50vh] m-auto mt-0 p-4 border rounded-lg bg-white'>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
+};
+
+BarChart.propTypes = {
+  liganteNames: PropTypes.array.isRequired,
+  liganteEnergias: PropTypes.array.isRequired,
+  chartKey: PropTypes.any,
+  energiaRedocking: PropTypes.number,
 };
 
 export default BarChart;
